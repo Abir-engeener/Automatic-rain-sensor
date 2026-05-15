@@ -1,0 +1,25 @@
+//Code=
+#include <Servo.h>
+
+  Servo myServo;
+const int rainSensorPin=A5;
+const int threshold=500;
+
+void setup(){
+  myServo.attach(9);
+  myServo.write(0);
+  pinMode(rainSensorPin, INPUT);
+}
+
+void loop(){
+  int sensorValue=analogRead(rainSensorPin);
+  
+  if(sensorValue<threshold){
+    myServo.write(180);
+  }else{
+    myServo.write(0);
+  }
+   delay(200);
+}
+
+ 
